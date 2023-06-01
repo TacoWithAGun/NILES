@@ -7,7 +7,7 @@ int buttonPin = 34;
 
 // startbutton 
 
-int startBututtonPin = 25; 
+int startButtonPin = 25; 
 
 int endButtonPin = 24; 
 
@@ -27,15 +27,15 @@ int enable1Pin = 14;
 
 // Servo Motor 
 
-const int hoch 
-
-const int runter 
-
-#include <Servo.h> 
-
-#define SERVO_PIN 33 
-
-Servo servoMotor; 
+//const int hoch 
+//
+//const int runter 
+//
+//#include <Servo.h> 
+//
+//#define SERVO_PIN 33 
+//
+//Servo servoMotor; 
 
  
  
@@ -99,9 +99,9 @@ bool Zubereitung = false;
 
 //spezielle RFID´s 
 
-String Zurücksetzen = " 9b 58 36 3b"; 
+String Zuruecksetzen = " 9b 58 36 3b"; 
 
-String Start = " 3b c1 40 3b"; 
+String Startstring = " 3b c1 40 3b"; 
 
  
  
@@ -169,9 +169,9 @@ String WhiteRussionRFID = " 1e 18 20 3f";
 
 //Variable ob man am Start ist oder nicht 
 
-bool Start = false; 
+bool Startbool = false; 
 
-bool End == false; 
+bool End = false; 
 
  
  
@@ -350,7 +350,7 @@ void loop() {
 
   { 
 
-    Start = true; 
+    Startbool = true; 
 
   } 
 
@@ -372,7 +372,7 @@ void loop() {
 
   { 
 
-    while (Start == false) 
+    while (Startbool == false) 
 
     { 
 
@@ -393,7 +393,7 @@ void loop() {
 
         { 
 
-          Start = true; 
+          Startbool = true; 
 
           // Stop the DC motor 
 
@@ -467,23 +467,23 @@ void loop() {
 
   //Was soll passieren, wenn Southern Comfort gelesen wird? 
 
-  if (newRfid.equals(SouthernComfortRFID) && SouthernComfortMAss != 0 && Zubereitung == true) 
+  if (newRfidId.equals(SouthernComfortRFID) && SouthernComfortMAss != 0 && Zubereitung == true) 
 
   { 
 
     //servoMotor.write(hoch); Servomotoren temporär auskommentiert, da hardware noch nicht vorhanden. Dafür Serial Print. 
 
-    serial.println("Servomotor hoch"); 
+    Serial.println("Servomotor hoch"); 
 
     delay (30); 
 
     SouthernComfortMAss -= 1; 
 
-    serial.println("SouthernComfortMAss = " + SouthernComfortMAss) 
+    Serial.println("SouthernComfortMAss = " + SouthernComfortMAss);
 
     //servoMotor.write(runter); 
 
-    serial.println("Servomotor runter") 
+    Serial.println("Servomotor runter");
 
     delay (15); 
 
@@ -499,7 +499,7 @@ void loop() {
 
       digitalWrite(motor1Pin2, HIGH); 
 
-      delay (5) 
+      delay (5);
 
     } 
 
@@ -512,7 +512,7 @@ void loop() {
  
  
 
-  if (newRfid.equals(SouthernComfortRFID)) 
+  if (newRfidId.equals(SouthernComfortRFID)) 
 
   { 
 
@@ -520,7 +520,7 @@ void loop() {
 
   } 
 
-  if (newRfid.equals(SouthernComfortRFID) && SouthernComfortMAss == 0 && Zubereitung == true) 
+  if (newRfidId.equals(SouthernComfortRFID) && SouthernComfortMAss == 0 && Zubereitung == true) 
 
   { 
 
@@ -532,7 +532,7 @@ void loop() {
 
     digitalWrite(motor1Pin2, HIGH); 
 
-    delay (5) 
+    delay (5);
 
   } 
 
@@ -541,23 +541,23 @@ void loop() {
 
   //Was soll passieren, wenn Maracujasirup gelesen wird? 
 
-  if (newRfid.equals(MaracujasirupRFID) && MaracujasirupMAss != 0 && Zubereitung == true) 
+  if (newRfidId.equals(MaracujasirupRFID) && MaracujasirupMAss != 0 && Zubereitung == true) 
 
   { 
 
     //servoMotor.write(hoch); Servomotor temporär auskommentiert, da hardware nicht vorhanden. 
 
-    serial.println("Servomotor hoch") 
+    Serial.println("Servomotor hoch");
 
     delay (30); 
 
     MaracujasirupMAss -= 1; 
 
-    serial.println("MaracujasirupMAss = " + MaracujasirupMAss) 
+    Serial.println("MaracujasirupMAss = " + MaracujasirupMAss);
 
     //servoMotor.write(runter); 
 
-    serial.println("Servomotor runter") 
+    Serial.println("Servomotor runter");
 
     delay (15); 
 
@@ -573,7 +573,7 @@ void loop() {
 
       digitalWrite(motor1Pin2, HIGH); 
 
-      delay (5) 
+      delay (5);
 
     } 
 
@@ -584,7 +584,7 @@ void loop() {
  
  
 
-  if (newRfid.equals(MaracujasirupRFID)) 
+  if (newRfidId.equals(MaracujasirupRFID)) 
 
   { 
 
@@ -595,7 +595,7 @@ void loop() {
  
  
 
-  if (newRfid.equals(MaracujasirupRFID) && MaracujasirupMAss == 0 && Zubereitung == true) 
+  if (newRfidId.equals(MaracujasirupRFID) && MaracujasirupMAss == 0 && Zubereitung == true) 
 
   { 
 
@@ -607,29 +607,29 @@ void loop() {
 
     digitalWrite(motor1Pin2, HIGH); 
 
-    delay (5) 
+    delay (5); 
 
   } 
 
   //Was soll passieren, wenn Gingerale gelesen wird? 
 
-  if (newRfid.equals(GingeraleRFID) && GingeraleMAss != 0 && Zubereitung == true) 
+  if (newRfidId.equals(GingeraleRFID) && GingeraleMAss != 0 && Zubereitung == true) 
 
   { 
 
     //servoMotor.write(hoch); Servomotor temprotär auskommentiert. 
 
-    serial.println("Servomotor hoch") 
+    Serial.println("Servomotor hoch");
 
     delay (30); 
 
     GingeraleMAss -= 1; 
 
-    serial.println("GingeraleMAss = " + GingeraleMAss) 
+    Serial.println("GingeraleMAss = " + GingeraleMAss);
 
     //servoMotor.write(runter); 
 
-    serial.println("Servomotor runter") 
+    Serial.println("Servomotor runter");
 
     delay (15); 
 
@@ -645,7 +645,7 @@ void loop() {
 
       digitalWrite(motor1Pin2, HIGH); 
 
-      delay (5) 
+      delay (5); 
 
     } 
 
@@ -656,7 +656,7 @@ void loop() {
  
  
 
-  if (newRfid.equals(GingeraleRFID)) 
+  if (newRfidId.equals(GingeraleRFID)) 
 
   { 
 
@@ -667,7 +667,7 @@ void loop() {
  
  
 
-  if (newRfid.equals(GingeraleRFID) && GingeraleMAss == 0 && Zubereitung == true) 
+  if (newRfidId.equals(GingeraleRFID) && GingeraleMAss == 0 && Zubereitung == true) 
 
   { 
 
@@ -679,29 +679,29 @@ void loop() {
 
     digitalWrite(motor1Pin2, HIGH); 
 
-    delay (5) 
+    delay (5); 
 
   } 
 
   //Was soll passieren, wenn Wodka gelesen wird? 
 
-  if (newRfid.equals(WodkaRFID) && WodkaMAss != 0 && Zubereitung == true) 
+  if (newRfidId.equals(WodkaRFID) && WodkaMAss != 0 && Zubereitung == true) 
 
   { 
 
     //servoMotor.write(hoch); Servomotor temprotär auskommentiert  
 
-    serial.println("Servomotor hoch") 
+    Serial.println("Servomotor hoch");
 
     delay (30); 
 
     WodkaMAss -= 1; 
 
-    serial.println("WodkaMAss = " + WodkaMAss) 
+    Serial.println("WodkaMAss = " + WodkaMAss);
 
     //servoMotor.write(runter); 
 
-    serial.println("Servomotor runter") 
+    Serial.println("Servomotor runter");
 
     delay (15); 
 
@@ -717,7 +717,7 @@ void loop() {
 
       digitalWrite(motor1Pin2, HIGH); 
 
-      delay (5) 
+      delay (5); 
 
     } 
 
@@ -728,7 +728,7 @@ void loop() {
  
  
 
-  if (newRfid.equals(WodkaRFID)) 
+  if (newRfidId.equals(WodkaRFID)) 
 
   { 
 
@@ -736,7 +736,7 @@ void loop() {
 
   } 
 
-  if (newRfid.equals(WodkaRFID) && WodkaMAss == 0 && Zubereitung == true) 
+  if (newRfidId.equals(WodkaRFID) && WodkaMAss == 0 && Zubereitung == true) 
 
   { 
 
@@ -748,7 +748,7 @@ void loop() {
 
     digitalWrite(motor1Pin2, HIGH); 
 
-    delay (5) 
+    delay (5); 
 
   } 
 
@@ -757,23 +757,23 @@ void loop() {
 
   //Was soll passieren, wenn Sahne gelesen wird? 
 
-  if (newRfid.equals(SahneRFID) && SahneMAss != 0 && Zubereitung == true) 
+  if (newRfidId.equals(SahneRFID) && SahneMAss != 0 && Zubereitung == true) 
 
   { 
 
     //servoMotor.write(hoch); Servomotor temprorär auskommentiert  
 
-    serial.println("Servomotor hoch") 
+    Serial.println("Servomotor hoch");
 
     delay (30); 
 
     SahneMAss -= 1; 
 
-    serial.println("SahneMAss = " + SahneMAss) 
+    Serial.println("SahneMAss = " + SahneMAss);
 
     //servoMotor.write(runter); 
 
-    serial.println("Servomotor runter") 
+    Serial.println("Servomotor runter");
 
     delay (15); 
 
@@ -789,7 +789,7 @@ void loop() {
 
       digitalWrite(motor1Pin2, HIGH); 
 
-      delay (5) 
+      delay (5); 
 
     } 
 
@@ -797,7 +797,7 @@ void loop() {
 
   } 
 
-  if (newRfid.equals(SahneRFID)) 
+  if (newRfidId.equals(SahneRFID)) 
 
   { 
 
@@ -805,7 +805,7 @@ void loop() {
 
   } 
 
-  if (newRfid.equals(SahneRFID) && SahneMAss == 0 && Zubereitung == true) 
+  if (newRfidId.equals(SahneRFID) && SahneMAss == 0 && Zubereitung == true) 
 
   { 
 
@@ -817,7 +817,7 @@ void loop() {
 
     digitalWrite(motor1Pin2, HIGH); 
 
-    delay (5) 
+    delay (5); 
 
   } 
 
@@ -826,23 +826,23 @@ void loop() {
 
   //Was soll passieren, wenn Blue Curacao gelesen wird? 
 
-  if (newRfid.equals(BlueCuracaoRFID) && BlueCuracaoMAss != 0 && Zubereitung == true) 
+  if (newRfidId.equals(BlueCuracaoRFID) && BlueCuracaoMAss != 0 && Zubereitung == true) 
 
   { 
 
     //servoMotor.write(hoch); Servomotor temporär auskommentiert  
 
-    serial.println("Servomotor hoch") 
+    Serial.println("Servomotor hoch");
 
     delay (30); 
 
     BlueCuracaoMAss -= 1; 
 
-    serial.println("BlueCuracaoMAss = " + BlueCuracaoMAss) 
+    Serial.println("BlueCuracaoMAss = " + BlueCuracaoMAss);
 
     //servoMotor.write(runter); 
 
-    serial.println("Servomotor runter") 
+    Serial.println("Servomotor runter");
 
     delay (15); 
 
@@ -858,7 +858,7 @@ void loop() {
 
       digitalWrite(motor1Pin2, HIGH); 
 
-      delay (5) 
+      delay (5); 
 
     } 
 
@@ -866,7 +866,7 @@ void loop() {
 
   } 
 
-  if (newRfid.equals(BlueCuracaoRFID)) 
+  if (newRfidId.equals(BlueCuracaoRFID)) 
 
   { 
 
@@ -874,7 +874,7 @@ void loop() {
 
   } 
 
-  if (newRfid.equals(BlueCuracaoRFID) && BlueCuracaoMAss == 0 && Zubereitung == true) 
+  if (newRfidId.equals(BlueCuracaoRFID) && BlueCuracaoMAss == 0 && Zubereitung == true) 
 
   { 
 
@@ -886,7 +886,7 @@ void loop() {
 
     digitalWrite(motor1Pin2, HIGH); 
 
-    delay (5) 
+    delay (5); 
 
   } 
 
@@ -896,23 +896,23 @@ void loop() {
 
   //Was soll passieren, wenn Kokossirup gelesen wird? 
 
-  if (newRfid.equals(KokossirupRFID) && KokossirupMAss  && Zubereitung == true) 
+  if (newRfidId.equals(KokossirupRFID) && KokossirupMAss  && Zubereitung == true) 
 
   { 
 
     //servoMotor.write(hoch); Servomotor temporär auskommentiert 
 
-    serial.println("Servomotor hoch") 
+    Serial.println("Servomotor hoch"); 
 
     delay (30); 
 
     KokossirupMAss -= 1; 
 
-    serial.println("KokossirupMAss= " + KokossirupMAss) 
+    Serial.println("KokossirupMAss= " + KokossirupMAss);
 
     //servoMotor.write(runter); 
 
-    serial.println("Servomotor runter") 
+    Serial.println("Servomotor runter");
 
     delay (15); 
 
@@ -928,7 +928,7 @@ void loop() {
 
       digitalWrite(motor1Pin2, HIGH); 
 
-      delay (5) 
+      delay (5); 
 
     } 
 
@@ -936,7 +936,7 @@ void loop() {
 
   } 
 
-  if (newRfid.equals(KokossirupRFID)) 
+  if (newRfidId.equals(KokossirupRFID)) 
 
   { 
 
@@ -944,7 +944,7 @@ void loop() {
 
   } 
 
-  if (newRfid.equals(KokossirupRFID) && KokossirupMAss == 0 && Zubereitung == true) 
+  if (newRfidId.equals(KokossirupRFID) && KokossirupMAss == 0 && Zubereitung == true) 
 
   { 
 
@@ -956,7 +956,7 @@ void loop() {
 
     digitalWrite(motor1Pin2, HIGH); 
 
-    delay (5) 
+    delay (5); 
 
   } 
 
@@ -965,23 +965,23 @@ void loop() {
 
   //Was soll passieren, wenn Rum gelesen wird? 
 
-  if (newRfid.equals(RumRFID) && RumMAss != 0 && Zubereitung == true) 
+  if (newRfidId.equals(RumRFID) && RumMAss != 0 && Zubereitung == true) 
 
   { 
 
     //servoMotor.write(hoch); Servomotor temporär auskommentiert  
 
-    serial.println("Servomotor hoch") 
+    Serial.println("Servomotor hoch"); 
 
     delay (30); 
 
     RumMAss -= 1; 
 
-    serial.println("RumMAss= " + RumMAss) 
+    Serial.println("RumMAss= " + RumMAss);
 
     //servoMotor.write(runter); 
 
-    serial.println("Servomotor runter") 
+    Serial.println("Servomotor runter");
 
     delay (15); 
 
@@ -997,7 +997,7 @@ void loop() {
 
       digitalWrite(motor1Pin2, HIGH); 
 
-      delay (5) 
+      delay (5);
 
     } 
 
@@ -1005,7 +1005,7 @@ void loop() {
 
   } 
 
-  if (newRfid.equals(RumRFID)) 
+  if (newRfidId.equals(RumRFID)) 
 
   { 
 
@@ -1013,7 +1013,7 @@ void loop() {
 
   } 
 
-  if (newRfid.equals(RumRFID) && RumMAss == 0 && Zubereitung == true) 
+  if (newRfidId.equals(RumRFID) && RumMAss == 0 && Zubereitung == true) 
 
   { 
 
@@ -1025,7 +1025,7 @@ void loop() {
 
     digitalWrite(motor1Pin2, HIGH); 
 
-    delay (5) 
+    delay (5); 
 
   } 
 
@@ -1034,23 +1034,23 @@ void loop() {
 
   //Was soll passieren, wenn AnanassaftRFID gelesen wird? 
 
-  if (newRfid.equals(AnanassaftRFID) && AnanassaftMAss  && Zubereitung == true) 
+  if (newRfidId.equals(AnanassaftRFID) && AnanassaftMAss  && Zubereitung == true) 
 
   { 
 
     //servoMotor.write(hoch); Servomotor temporär auskommentiert 
 
-    serial.println("Servomotor hoch") 
+    Serial.println("Servomotor hoch");
 
     delay (30); 
 
     AnanassaftMAss -= 1; 
 
-    serial.println("AnanassaftMAss= " + AnanassaftMAss) 
+    Serial.println("AnanassaftMAss= " + AnanassaftMAss);
 
     //servoMotor.write(runter); 
 
-    serial.println("Servomotor runter") 
+    Serial.println("Servomotor runter");
 
     delay (15); 
 
@@ -1066,7 +1066,7 @@ void loop() {
 
       digitalWrite(motor1Pin2, HIGH); 
 
-      delay (5) 
+      delay (5); 
 
     } 
 
@@ -1074,7 +1074,7 @@ void loop() {
 
   } 
 
-  if (newRfid.equals(AnanassaftRFID)) 
+  if (newRfidId.equals(AnanassaftRFID)) 
 
   { 
 
@@ -1082,7 +1082,7 @@ void loop() {
 
   } 
 
-  if (newRfid.equals(AnanassaftRFID) && AnanassaftMAss == 0 && Zubereitung == true) 
+  if (newRfidId.equals(AnanassaftRFID) && AnanassaftMAss == 0 && Zubereitung == true) 
 
   { 
 
@@ -1094,7 +1094,7 @@ void loop() {
 
     digitalWrite(motor1Pin2, HIGH); 
 
-    delay (5) 
+    delay (5);
 
   } 
 
@@ -1103,23 +1103,23 @@ void loop() {
 
   //Was soll passieren, wenn Mandelsirup gelesen wird? 
 
-  if (newRfid.equals(MandelsirupRFID) && MandelsirupMAss != 0 && Zubereitung == true) 
+  if (newRfidId.equals(MandelsirupRFID) && MandelsirupMAss != 0 && Zubereitung == true) 
 
   { 
 
     //servoMotor.write(hoch); Servomotor temporär auskommentiert  
 
-    serial.println("Servomotor hoch") 
+    Serial.println("Servomotor hoch");
 
     delay (30); 
 
     MandelsirupMAss -= 1; 
 
-    serial.println("MandelsirupMAss= " + MandelsirupMAss) 
+    Serial.println("MandelsirupMAss= " + MandelsirupMAss); 
 
     //servoMotor.write(runter); 
 
-    serial.println("Servomotor runter") 
+    Serial.println("Servomotor runter");
 
     delay (15); 
 
@@ -1135,7 +1135,7 @@ void loop() {
 
       digitalWrite(motor1Pin2, HIGH); 
 
-      delay (5) 
+      delay (5);
 
     } 
 
@@ -1143,7 +1143,7 @@ void loop() {
 
   } 
 
-  if (newRfid.equals(MandelsirupRFID)) 
+  if (newRfidId.equals(MandelsirupRFID)) 
 
   { 
 
@@ -1154,7 +1154,7 @@ void loop() {
  
  
 
-  if (newRfid.equals(MandelsirupRFID) && MandelsirupMAss == 0 && Zubereitung == true) 
+  if (newRfidId.equals(MandelsirupRFID) && MandelsirupMAss == 0 && Zubereitung == true) 
 
   { 
 
@@ -1166,7 +1166,7 @@ void loop() {
 
     digitalWrite(motor1Pin2, HIGH); 
 
-    delay (5) 
+    delay (5); 
 
   } 
 
@@ -1175,23 +1175,23 @@ void loop() {
 
   //Was soll passieren, wenn Zuckersirup gelesen wird? 
 
-  if (newRfid.equals(ZuckersirupRFID) && ZuckersirupMAss != 0 && Zubereitung == true) 
+  if (newRfidId.equals(ZuckersirupRFID) && ZuckersirupMAss != 0 && Zubereitung == true) 
 
   { 
 
     //servoMotor.write(hoch); Servomotor temporär auskommentiert 
 
-    serial.println("Servomotor hoch") 
+    Serial.println("Servomotor hoch");
 
     delay (30); 
 
     ZuckersirupMAss -= 1; 
 
-    serial.println("ZuckersirupMAss = " + ZuckersirupMAss) 
+    Serial.println("ZuckersirupMAss = " + ZuckersirupMAss);
 
     //servoMotor.write(runter); 
 
-    serial.println("Servomotor runter") 
+    Serial.println("Servomotor runter");
 
     delay (15); 
 
@@ -1207,7 +1207,7 @@ void loop() {
 
       digitalWrite(motor1Pin2, HIGH); 
 
-      delay (5) 
+      delay (5); 
 
     } 
 
@@ -1215,7 +1215,7 @@ void loop() {
 
   } 
 
-  if (newRfid.equals(ZuckersirupRFID)) 
+  if (newRfidId.equals(ZuckersirupRFID)) 
 
   { 
 
@@ -1223,7 +1223,7 @@ void loop() {
 
   } 
 
-  if (newRfid.equals(ZuckersirupRFID) && ZuckersirupMAss == 0 && Zubereitung == true) 
+  if (newRfidId.equals(ZuckersirupRFID) && ZuckersirupMAss == 0 && Zubereitung == true) 
 
   { 
 
@@ -1235,7 +1235,7 @@ void loop() {
 
     digitalWrite(motor1Pin2, HIGH); 
 
-    delay (5) 
+    delay (5); 
 
   } 
 
@@ -1244,23 +1244,23 @@ void loop() {
 
   //Was soll passieren, wenn Orangensaft gelesen wird? 
 
-  if (newRfid.equals(OrangensaftRFID) && OrangensaftMAss != 0 && Zubereitung == true) 
+  if (newRfidId.equals(OrangensaftRFID) && OrangensaftMAss != 0 && Zubereitung == true) 
 
   { 
 
     //servoMotor.write(hoch); Servomotor temporär auskommentiert 
 
-    serial.println("Servomotor hoch") 
+    Serial.println("Servomotor hoch");
 
     delay (30); 
 
     OrangensaftMAss -= 1; 
 
-    serial.println("OrangensaftMAss= " + OrangensaftMAss) 
+    Serial.println("OrangensaftMAss= " + OrangensaftMAss);
 
     //servoMotor.write(runter); 
 
-    serial.println("Servomotor runter") 
+    Serial.println("Servomotor runter");
 
     delay (15); 
 
@@ -1276,7 +1276,7 @@ void loop() {
 
       digitalWrite(motor1Pin2, HIGH); 
 
-      delay (5) 
+      delay (5); 
 
     } 
 
@@ -1286,7 +1286,7 @@ void loop() {
 
   } 
 
-  if (newRfid.equals(OrangensaftRFID)) 
+  if (newRfidId.equals(OrangensaftRFID)) 
 
   { 
 
@@ -1297,7 +1297,7 @@ void loop() {
  
  
 
-  if (newRfid.equals(OrangensaftRFID) && OrangensaftMAss == 0 && Zubereitung == true) 
+  if (newRfidId.equals(OrangensaftRFID) && OrangensaftMAss == 0 && Zubereitung == true)
 
   { 
 
@@ -1309,7 +1309,7 @@ void loop() {
 
     digitalWrite(motor1Pin2, HIGH); 
 
-    delay (5) 
+    delay (5);
 
   } 
 
@@ -1318,23 +1318,23 @@ void loop() {
 
   //Was soll passieren, wenn Kaffeelikoer gelesen wird? 
 
-  if (newRfid.equals(KaffeelikoerRFID) && KaffeelikoerMAss != 0 && Zubereitung == true) 
+  if (newRfidId.equals(KaffeelikoerRFID) && KaffeelikoerMAss != 0 && Zubereitung == true) 
 
   { 
 
     //servoMotor.write(hoch); Servomotor temporär auskommentiert 
 
-    serial.println("Servomotor hoch") 
+    Serial.println("Servomotor hoch");
 
     delay (30); 
 
     KaffeelikoerMAss -= 1; 
 
-    serial.println("KaffeelikoerMAss= " + KaffeelikoerMAss) 
+    Serial.println("KaffeelikoerMAss= " + KaffeelikoerMAss);
 
     //servoMotor.write(runter); 
 
-    serial.println("Servomotor runter") 
+    Serial.println("Servomotor runter");
 
     delay (15); 
 
@@ -1350,7 +1350,7 @@ void loop() {
 
       digitalWrite(motor1Pin2, HIGH); 
 
-      delay (5) 
+      delay (5); 
 
     } 
 
@@ -1358,7 +1358,7 @@ void loop() {
 
   } 
 
-  if (newRfid.equals(KaffeelikoerRFID)) 
+  if (newRfidId.equals(KaffeelikoerRFID)) 
 
   { 
 
@@ -1369,7 +1369,7 @@ void loop() {
  
  
 
-  if (newRfid.equals(KaffeelikoerRFID) && KaffeelikoerMAss == 0 && Zubereitung == true) 
+  if (newRfidId.equals(KaffeelikoerRFID) && KaffeelikoerMAss == 0 && Zubereitung == true) 
 
   { 
 
@@ -1381,7 +1381,7 @@ void loop() {
 
     digitalWrite(motor1Pin2, HIGH); 
 
-    delay (5) 
+    delay (5);
 
   } 
 
@@ -1390,23 +1390,23 @@ void loop() {
 
   //Was soll passieren, wenn Tomatensaft gelesen wird? 
 
-  if (newRfid.equals(TomatensaftRFID) && TomatensaftMAss != 0 && Zubereitung == true) 
+  if (newRfidId.equals(TomatensaftRFID) && TomatensaftMAss != 0 && Zubereitung == true) 
 
   { 
 
     //servoMotor.write(hoch); Servomotor temporär sukommentiert 
 
-    serial.println("Servomotor hoch") 
+    Serial.println("Servomotor hoch");
 
     delay (30); 
 
     TomatensaftMAss -= 1; 
 
-    serial.println("TomatensaftMAss= " + TomatensaftMAss) 
+    Serial.println("TomatensaftMAss= " + TomatensaftMAss);
 
     //servoMotor.write(runter); 
 
-    serial.println("Servomotor runter") 
+    Serial.println("Servomotor runter");
 
     delay (15); 
 
@@ -1422,7 +1422,7 @@ void loop() {
 
       digitalWrite(motor1Pin2, HIGH); 
 
-      delay (5) 
+      delay (5); 
 
     } 
 
@@ -1431,7 +1431,7 @@ void loop() {
 
   } 
 
-  if (newRfid.equals(TomatensaftRFID)) 
+  if (newRfidId.equals(TomatensaftRFID)) 
 
   { 
 
@@ -1439,7 +1439,7 @@ void loop() {
 
   } 
 
-  if (newRfid.equals(TomatensaftRFID) && TomatensaftMAss == 0 && Zubereitung == true) 
+  if (newRfidId.equals(TomatensaftRFID) && TomatensaftMAss == 0 && Zubereitung == true) 
 
   { 
 
@@ -1451,7 +1451,7 @@ void loop() {
 
     digitalWrite(motor1Pin2, HIGH); 
 
-    delay (5) 
+    delay (5); 
 
   } 
 
@@ -1460,23 +1460,23 @@ void loop() {
 
   //Was soll passieren, wenn Limettensaft gelesen wird? 
 
-  if (newRfid.equals(LimettensaftRFID) && LimettensaftMAss != 0 && Zubereitung == true) 
+  if (newRfidId.equals(LimettensaftRFID) && LimettensaftMAss != 0 && Zubereitung == true) 
 
   { 
 
     //servoMotor.write(hoch); Servomotot temporär auskommentiert 
 
-    serial.println("Servomotor hoch") 
+    Serial.println("Servomotor hoch");
 
     delay (30); 
 
     LimettensaftMAss -= 1; 
 
-    serial.println("LimettensaftMAss= " + LimettensaftMAss) 
+    Serial.println("LimettensaftMAss= " + LimettensaftMAss);
 
     //servoMotor.write(runter); 
 
-    serial.println("Servomotor runter") 
+    Serial.println("Servomotor runter");
 
     delay (15); 
 
@@ -1500,7 +1500,7 @@ void loop() {
 
   } 
 
-  if (newRfid.equals(LimettensaftRFID)) 
+  if (newRfidId.equals(LimettensaftRFID)) 
 
   { 
 
@@ -1508,7 +1508,7 @@ void loop() {
 
   } 
 
-  if (newRfid.equals(LimettensaftRFID) && LimettensaftMAss == 0 && Zubereitung == true) 
+  if (newRfidId.equals(LimettensaftRFID) && LimettensaftMAss == 0 && Zubereitung == true) 
 
   { 
 
@@ -1526,23 +1526,23 @@ void loop() {
 
   //Was soll passieren, wenn Cointreu gelesen wird? 
 
-  if (newRfid.equals(CointreuRFID) && CointreuMAss != 0 && Zubereitung == true) 
+  if (newRfidId.equals(CointreuRFID) && CointreuMAss != 0 && Zubereitung == true) 
 
   { 
 
     //servoMotor.write(hoch); Servomotor temporär auskommentiert 
 
-    serial.println("Servomotor hoch") 
+    Serial.println("Servomotor hoch");
 
     delay (30); 
 
     CointreuMAss -= 1; 
 
-    serial.println("CointreuMAss= " + CointreuMAss) 
+    Serial.println("CointreuMAss= " + CointreuMAss);
 
     //servoMotor.write(runter); 
 
-    serial.println("Servomotor runter") 
+    Serial.println("Servomotor runter");
 
     delay (15); 
 
@@ -1566,7 +1566,7 @@ void loop() {
 
   } 
 
-  if (newRfid.equals(CointreuRFID)) 
+  if (newRfidId.equals(CointreuRFID)) 
 
   { 
 
@@ -1576,7 +1576,7 @@ void loop() {
 
    
 
-  if (newRfid.equals(CointreuRFID) && CointreuMAss == 0 && Zubereitung == true) 
+  if (newRfidId.equals(CointreuRFID) && CointreuMAss == 0 && Zubereitung == true) 
 
   { 
 
@@ -1597,23 +1597,23 @@ void loop() {
 
   //Was soll passieren, wenn Cranberrynektar gelesen wird? 
 
-  if (newRfid.equals(CranberrynektarRFID) && CranberrynektarMAss != 0 && Zubereitung == true) 
+  if (newRfidId.equals(CranberrynektarRFID) && CranberrynektarMAss != 0 && Zubereitung == true) 
 
   { 
 
     //servoMotor.write(hoch); Servomotor temporär auskommentiert 
 
-    serial.println("Servomotor hoch") 
+    Serial.println("Servomotor hoch");
 
     delay (30); 
 
     CranberrynektarMAss -= 1; 
 
-    serial.println("CranberrynektarMAss= " + CranberrynektarMAss) 
+    Serial.println("CranberrynektarMAss= " + CranberrynektarMAss);
 
     //servoMotor.write(runter); 
 
-    serial.println("Servomotor runter") 
+    Serial.println("Servomotor runter"); 
 
     delay (15); 
 
@@ -1637,7 +1637,7 @@ void loop() {
 
   } 
 
-  if (newRfid.equals(CranberrynektarRFID)) 
+  if (newRfidId.equals(CranberrynektarRFID)) 
 
   { 
 
@@ -1648,7 +1648,7 @@ void loop() {
  
  
 
-    if (newRfid.equals(CranberrynektarRFID) && CranberrynektarMAss == 0 && Zubereitung == true) 
+    if (newRfidId.equals(CranberrynektarRFID) && CranberrynektarMAss == 0 && Zubereitung == true) 
 
   { 
 
@@ -1669,23 +1669,23 @@ void loop() {
 
   //Was soll passieren, wenn Grenadine gelesen wird? 
 
-  if (newRfid.equals(GrenadineRFID) && GrenadineMAss != 0 && Zubereitung == true) 
+  if (newRfidId.equals(GrenadineRFID) && GrenadineMAss != 0 && Zubereitung == true) 
 
   { 
 
     //servoMotor.write(hoch); Servomotot temporär auskommentiert 
 
-    serial.println("Servomotor hoch") 
+    Serial.println("Servomotor hoch");
 
     delay (30); 
 
     GrenadineMAss -= 1; 
 
-    serial.println("GrenadineMAss= " + GrenadineMAss) 
+    Serial.println("GrenadineMAss= " + GrenadineMAss);
 
     //servoMotor.write(runter); 
 
-    serial.println("Servomotor runter") 
+    Serial.println("Servomotor runter");
 
     delay (15);     
 
@@ -1707,7 +1707,7 @@ void loop() {
 
   } 
 
-  if (newRfid.equals(GrenadineRFID)) 
+  if (newRfidId.equals(GrenadineRFID)) 
 
   { 
 
@@ -1718,7 +1718,7 @@ void loop() {
  
  
 
-  if (newRfid.equals(GrenadineRFID) && GrenadineMAss == 0 && Zubereitung == true) 
+  if (newRfidId.equals(GrenadineRFID) && GrenadineMAss == 0 && Zubereitung == true) 
 
   { 
 
@@ -1739,23 +1739,23 @@ void loop() {
 
   //Was soll passieren, wenn Pfirsichlikoer gelesen wird? 
 
-  if (newRfid.equals(PfirsichlikoerRFID) && PfirsichlikoerMAss != 0 && Zubereitung == true) 
+  if (newRfidId.equals(PfirsichlikoerRFID) && PfirsichlikoerMAss != 0 && Zubereitung == true) 
 
   { 
 
     //servoMotor.write(hoch); Servomotor temporär auskommentiert 
 
-    serial.println("Servomotor hoch") 
+    Serial.println("Servomotor hoch");
 
     delay (30); 
 
     PfirsichlikoerMAss -= 1; 
 
-    serial.println("PfirsichlikoerMAss= "+ PfirsichlikoerMAss) 
+    Serial.println("PfirsichlikoerMAss= "+ PfirsichlikoerMAss);
 
     //servoMotor.write(runter); 
 
-    serial.println("Servomotor runter") 
+    Serial.println("Servomotor runter");
 
     delay (15); 
 
@@ -1780,7 +1780,7 @@ void loop() {
  
  
 
-  if (newRfid.equals(PfirsichlikoerRFID) && Zubereitung == false) 
+  if (newRfidId.equals(PfirsichlikoerRFID) && Zubereitung == false) 
 
   { 
 
@@ -1791,7 +1791,7 @@ void loop() {
  
  
 
-  if (newRfid.equals(PfirsichlikoerRFID) && PfirsichlikoerMAss == 0 && Zubereitung == true) 
+  if (newRfidId.equals(PfirsichlikoerRFID) && PfirsichlikoerMAss == 0 && Zubereitung == true) 
 
   { 
 
@@ -1807,7 +1807,7 @@ void loop() {
 
   } 
 
-  if (newRfid.equals(Start)) 
+  if (newRfidId.equals(Startstring)) 
 
   { 
 
@@ -1825,21 +1825,17 @@ void loop() {
 
   //Was soll passieren, wenn Zurücksetzen gelesen wird? 
 
-  if (newRfid.equals(Zurücksetzen)) 
+  if (newRfidId.equals(Zuruecksetzen)) 
 
     { 
 
         SouthernComfort = false; 
-
-        LadySunshine = false; 
 
         Maracujasirup = false; 
 
         Gingerale = false; 
 
         Wodka = false; 
-
-        Swimmingpool = false; 
 
         Sahne = false; 
 
@@ -1851,25 +1847,15 @@ void loop() {
 
         Ananassaft = false; 
 
-        Maitai = false; 
-
         Mandelsirup = false; 
 
         Zuckersirup = false; 
 
         Orangensaft = false; 
 
-        WhiteRussion = false; 
-
         Kaffeelikoer = false; 
 
-        PinaColada = false; 
-
-        BloodyMary = false; 
-
         Tomatensaft = false; 
-
-        Cosmopolitan = false; 
 
         Limettensaft = false; 
 
@@ -1878,10 +1864,6 @@ void loop() {
         Cranberrynektar = false; 
 
         Grenadine = false; 
-
-        Zombie = false; 
-
-        SOTB = false; 
 
         Pfirsichlikoer = false; 
 
@@ -1939,7 +1921,7 @@ void loop() {
  
  
 
-  if (newRfid.equals(SOTBRFID) && Pfirsichlikoer == true && Cranberrynektar == true && Orangensaft == true && Wodka == true) 
+  if (newRfidId.equals(SOTBRFID) && Pfirsichlikoer == true && Cranberrynektar == true && Orangensaft == true && Wodka == true) 
 
     { 
 
@@ -1955,7 +1937,7 @@ void loop() {
 
     } 
 
-  if (newRfid.equals(SOTBRFID) && Pfirsichlikoer == false) 
+  if (newRfidId.equals(SOTBRFID) && Pfirsichlikoer == false) 
 
   { 
 
@@ -1963,7 +1945,7 @@ void loop() {
 
   } 
 
-  if (newRfid.equals(SOTBRFID) && Cranberrynektar == false) 
+  if (newRfidId.equals(SOTBRFID) && Cranberrynektar == false) 
 
   { 
 
@@ -1971,7 +1953,7 @@ void loop() {
 
   } 
 
-  if (newRfid.equals(SOTBRFID) && Orangensaft == false) 
+  if (newRfidId.equals(SOTBRFID) && Orangensaft == false) 
 
   { 
 
@@ -1979,7 +1961,7 @@ void loop() {
 
   } 
 
-  if (newRfid.equals(SOTBRFID) && Wodka == false) 
+  if (newRfidId.equals(SOTBRFID) && Wodka == false) 
 
   { 
 
@@ -1989,7 +1971,7 @@ void loop() {
 
    
 
-  if (newRfid.equals(CosmopolitanRFID) && Limettensaft == true && Cointreu == true && Cranberranektar == true && Wodka == true) 
+  if (newRfidId.equals(CosmopolitanRFID) && Limettensaft == true && Cointreu == true && Cranberrynektar == true && Wodka == true) 
 
     { 
 
@@ -2005,7 +1987,7 @@ void loop() {
 
     } 
 
-  if (newRfid.equals(CosmopolitanRFID) && Limettensaft == false) 
+  if (newRfidId.equals(CosmopolitanRFID) && Limettensaft == false) 
 
   { 
 
@@ -2013,7 +1995,7 @@ void loop() {
 
   } 
 
-  if (newRfid.equals(CosmopolitanRFID) && Cointreu == false) 
+  if (newRfidId.equals(CosmopolitanRFID) && Cointreu == false) 
 
   { 
 
@@ -2021,7 +2003,7 @@ void loop() {
 
   } 
 
-  if (newRfid.equals(CosmopolitanRFID) && Cranberranektar == false) 
+  if (newRfidId.equals(CosmopolitanRFID) && Cranberrynektar == false) 
 
   { 
 
@@ -2029,7 +2011,7 @@ void loop() {
 
   } 
 
-  if (newRfid.equals(CosmopolitanRFID) && Wodka == false) 
+  if (newRfidId.equals(CosmopolitanRFID) && Wodka == false) 
 
   { 
 
@@ -2039,7 +2021,7 @@ void loop() {
 
    
 
-  if (newRfid.equals(BloodyMaryRFID) && tomatensaft == true && Limettensaft == true && Wodka == true) 
+  if (newRfidId.equals(BloodyMaryRFID) && Tomatensaft == true && Limettensaft == true && Wodka == true) 
 
     { 
 
@@ -2053,7 +2035,7 @@ void loop() {
 
     } 
 
-  if (newRfid.equals(BloodyMaryRFID) && tomatensaft == false) 
+  if (newRfidId.equals(BloodyMaryRFID) && Tomatensaft == false) 
 
   { 
 
@@ -2061,7 +2043,7 @@ void loop() {
 
   } 
 
-  if (newRfid.equals(BloodyMaryRFID) && Limettensaft == false) 
+  if (newRfidId.equals(BloodyMaryRFID) && Limettensaft == false) 
 
   { 
 
@@ -2069,7 +2051,7 @@ void loop() {
 
   } 
 
-  if (newRfid.equals(BloodyMaryRFID) && Wodka == false) 
+  if (newRfidId.equals(BloodyMaryRFID) && Wodka == false) 
 
   { 
 
@@ -2079,7 +2061,7 @@ void loop() {
 
    
 
-  if (newRfid.equals(PinaColadaRFID) && Kokossirup == true && Rum == true && Ananassaft == true) 
+  if (newRfidId.equals(PinaColadaRFID) && Kokossirup == true && Rum == true && Ananassaft == true) 
 
     { 
 
@@ -2093,7 +2075,7 @@ void loop() {
 
     } 
 
-  if (newRfid.equals(PinaColadaRFID) && Kokossirup == false) 
+  if (newRfidId.equals(PinaColadaRFID) && Kokossirup == false) 
 
   { 
 
@@ -2101,7 +2083,7 @@ void loop() {
 
   } 
 
-  if (newRfid.equals(PinaColadaRFID) && Rum == false) 
+  if (newRfidId.equals(PinaColadaRFID) && Rum == false) 
 
   { 
 
@@ -2109,7 +2091,7 @@ void loop() {
 
   } 
 
-  if (newRfid.equals(PinaColadaRFID) && Ananassaft == false) 
+  if (newRfidId.equals(PinaColadaRFID) && Ananassaft == false) 
 
   { 
 
@@ -2119,7 +2101,7 @@ void loop() {
 
    
 
-  if (newRfid.equals(LadySunshineRFID) && Maracujasirup == true && Gingerale == true && Wodka == true && SouthernComfort == true) 
+  if (newRfidId.equals(LadySunshineRFID) && Maracujasirup == true && Gingerale == true && Wodka == true && SouthernComfort == true) 
 
     { 
 
@@ -2135,7 +2117,7 @@ void loop() {
 
     } 
 
-  if (newRfid.equals(LadySunshineRFID) && Maracujasirup == false) 
+  if (newRfidId.equals(LadySunshineRFID) && Maracujasirup == false) 
 
   { 
 
@@ -2143,7 +2125,7 @@ void loop() {
 
   } 
 
-  if (newRfid.equals(LadySunshineRFID) && Gingerale == false) 
+  if (newRfidId.equals(LadySunshineRFID) && Gingerale == false) 
 
   { 
 
@@ -2151,7 +2133,7 @@ void loop() {
 
   } 
 
-  if (newRfid.equals(LadySunshineRFID) && Wodka == false) 
+  if (newRfidId.equals(LadySunshineRFID) && Wodka == false) 
 
   { 
 
@@ -2159,7 +2141,7 @@ void loop() {
 
   } 
 
-  if (newRfid.equals(LadySunshineRFID) && SouthernComfort == false) 
+  if (newRfidId.equals(LadySunshineRFID) && SouthernComfort == false) 
 
   { 
 
@@ -2169,7 +2151,7 @@ void loop() {
 
    
 
-  if (newRfid.equals(SwimmingpoolRFID) && Sahne == true && BlueCuracao == true && Kokossirup == true && Ananassaft == true && Wodka == true) 
+  if (newRfidId.equals(SwimmingpoolRFID) && Sahne == true && BlueCuracao == true && Kokossirup == true && Ananassaft == true && Wodka == true) 
 
     { 
 
@@ -2187,7 +2169,7 @@ void loop() {
 
     } 
 
-  if (newRfid.equals(SwimmingpoolRFID) && Sahne == false) 
+  if (newRfidId.equals(SwimmingpoolRFID) && Sahne == false) 
 
   { 
 
@@ -2195,7 +2177,7 @@ void loop() {
 
   } 
 
-  if (newRfid.equals(SwimmingpoolRFID) && BlueCuracao == false) 
+  if (newRfidId.equals(SwimmingpoolRFID) && BlueCuracao == false) 
 
   { 
 
@@ -2203,7 +2185,7 @@ void loop() {
 
   } 
 
-  if (newRfid.equals(SwimmingpoolRFID) && Kokossirup == false) 
+  if (newRfidId.equals(SwimmingpoolRFID) && Kokossirup == false) 
 
   { 
 
@@ -2211,7 +2193,7 @@ void loop() {
 
   } 
 
-  if (newRfid.equals(SwimmingpoolRFID) && Ananassaft == false) 
+  if (newRfidId.equals(SwimmingpoolRFID) && Ananassaft == false) 
 
   { 
 
@@ -2219,7 +2201,7 @@ void loop() {
 
   } 
 
-  if (newRfid.equals(SwimmingpoolRFID) && Wodka == false) 
+  if (newRfidId.equals(SwimmingpoolRFID) && Wodka == false) 
 
   { 
 
@@ -2229,7 +2211,7 @@ void loop() {
 
    
 
-  if (newRfid.equals(MaiTaiRFID) && Mandelsirup == true && Zuckersirup == true && Ananassaft == true && Orangensaft == true && Rum == true) 
+  if (newRfidId.equals(MaiTaiRFID) && Mandelsirup == true && Zuckersirup == true && Ananassaft == true && Orangensaft == true && Rum == true) 
 
     { 
 
@@ -2247,7 +2229,7 @@ void loop() {
 
     } 
 
-  if (newRfid.equals(MaiTaiRFID) && Mandelsirup == false) 
+  if (newRfidId.equals(MaiTaiRFID) && Mandelsirup == false) 
 
   { 
 
@@ -2255,7 +2237,7 @@ void loop() {
 
   } 
 
-  if (newRfid.equals(MaiTaiRFID) && Zuckersirup == false) 
+  if (newRfidId.equals(MaiTaiRFID) && Zuckersirup == false) 
 
   { 
 
@@ -2263,7 +2245,7 @@ void loop() {
 
   } 
 
-  if (newRfid.equals(MaiTaiRFID) && Ananassaft == false) 
+  if (newRfidId.equals(MaiTaiRFID) && Ananassaft == false) 
 
   { 
 
@@ -2271,7 +2253,7 @@ void loop() {
 
   } 
 
-  if (newRfid.equals(MaiTaiRFID) && Orangensaft == false) 
+  if (newRfidId.equals(MaiTaiRFID) && Orangensaft == false) 
 
   { 
 
@@ -2279,7 +2261,7 @@ void loop() {
 
   } 
 
-  if (newRfid.equals(MaiTaiRFID) && Rum == false) 
+  if (newRfidId.equals(MaiTaiRFID) && Rum == false) 
 
   { 
 
@@ -2289,7 +2271,7 @@ void loop() {
 
    
 
-  if (newRfid.equals(WhiteRussionRFID) && Sahne == true && Wodka == true && Kaffeelikoer == true) 
+  if (newRfidId.equals(WhiteRussionRFID) && Sahne == true && Wodka == true && Kaffeelikoer == true) 
 
     { 
 
@@ -2303,7 +2285,7 @@ void loop() {
 
     } 
 
-  if (newRfid.equals(WhiteRussionRFID) && Sahne == false) 
+  if (newRfidId.equals(WhiteRussionRFID) && Sahne == false) 
 
   { 
 
@@ -2311,7 +2293,7 @@ void loop() {
 
   } 
 
-  if (newRfid.equals(WhiteRussionRFID) && Wodka == false) 
+  if (newRfidId.equals(WhiteRussionRFID) && Wodka == false) 
 
   { 
 
@@ -2319,7 +2301,7 @@ void loop() {
 
   } 
 
-  if (newRfid.equals(WhiteRussionRFID) && Kaffeelikoer == false) 
+  if (newRfidId.equals(WhiteRussionRFID) && Kaffeelikoer == false) 
 
   { 
 
@@ -2329,3 +2311,5 @@ void loop() {
 
  
 } 
+
+
