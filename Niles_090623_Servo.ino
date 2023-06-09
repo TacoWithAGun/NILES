@@ -168,8 +168,11 @@ Servo myservo;  // create servo object to control a servo
 // Position des Steppermotors
 int Position = 0;
 
-
+//Servomotor
 int pos = 0;    // variable to store the servo position
+int Hoch = 180;
+int Tief = 0;
+
 // Recommended PWM GPIO pins on the ESP32 include 2,4,12-19,21-23,25-27,32-33 
 int servoPin = 13;
  
@@ -315,247 +318,247 @@ void loop() {
     }
      while (newRfidId.equals(SouthernComfortRFID) && SouthernComfortMAss != 0 && Zubereitung == true)
   {
-     for (pos = 0; pos <= 180; pos += 1) { // goes from 0 degrees to 180 degrees
+     for (pos = Tief; pos <= Hoch; pos += 1) { // goes from 0 degrees to 180 degrees
      		// in steps of 1 degree
      		myservo.write(pos);    // tell servo to go to position in variable 'pos'
      		delay(15);             // waits 15ms for the servo to reach the position
      	}
        SouthernComfortMAss -= 1;
-     	for (pos = 180; pos >= 0; pos -= 1) { // goes from 180 degrees to 0 degrees
+     	for (pos = Hoch; pos >= Tief; pos -= 1) { // goes from 180 degrees to 0 degrees
      		myservo.write(pos);    // tell servo to go to position in variable 'pos'
      		delay(15);             // waits 15ms for the servo to reach the position
      	}
   }
      while (newRfidId.equals(MaracujasirupRFID) && MaracujasirupMAss != 0 && Zubereitung == true)
   {
-     for (pos = 0; pos <= 180; pos += 1) { // goes from 0 degrees to 180 degrees
+     for (pos = Tief; pos <= Hoch; pos += 1) { // goes from 0 degrees to 180 degrees
      		// in steps of 1 degree
      		myservo.write(pos);    // tell servo to go to position in variable 'pos'
      		delay(15);             // waits 15ms for the servo to reach the position
      	}
        MaracujasirupMAss -= 1;
-     	for (pos = 180; pos >= 0; pos -= 1) { // goes from 180 degrees to 0 degrees
+     	for (pos = Hoch; pos >= Tief; pos -= 1) { // goes from 180 degrees to 0 degrees
      		myservo.write(pos);    // tell servo to go to position in variable 'pos'
      		delay(15);             // waits 15ms for the servo to reach the position
      	}
   }
      while (newRfidId.equals(GingeraleRFID) && GingeraleMAss != 0 && Zubereitung == true)
   {
-     for (pos = 0; pos <= 180; pos += 1) { // goes from 0 degrees to 180 degrees
+     for (pos = Tief; pos <= Hoch; pos += 1) { // goes from 0 degrees to 180 degrees
      		// in steps of 1 degree
      		myservo.write(pos);    // tell servo to go to position in variable 'pos'
      		delay(15);             // waits 15ms for the servo to reach the position
      	}
        GingeraleMAss -= 1;
-     	for (pos = 180; pos >= 0; pos -= 1) { // goes from 180 degrees to 0 degrees
+     	for (pos = Hoch; pos >= Tief; pos -= 1) { // goes from 180 degrees to 0 degrees
      		myservo.write(pos);    // tell servo to go to position in variable 'pos'
      		delay(15);             // waits 15ms for the servo to reach the position
      	}
   }
      while (newRfidId.equals(WodkaRFID) && WodkaMAss != 0 && Zubereitung == true)
   {
-     for (pos = 0; pos <= 180; pos += 1) { // goes from 0 degrees to 180 degrees
+     for (pos = Tief; pos <= Hoch; pos += 1) { // goes from 0 degrees to 180 degrees
      		// in steps of 1 degree
      		myservo.write(pos);    // tell servo to go to position in variable 'pos'
      		delay(15);             // waits 15ms for the servo to reach the position
      	}
        WodkaMAss -= 1;
-     	for (pos = 180; pos >= 0; pos -= 1) { // goes from 180 degrees to 0 degrees
+     	for (pos = Hoch; pos >= Tief; pos -= 1) { // goes from 180 degrees to 0 degrees
      		myservo.write(pos);    // tell servo to go to position in variable 'pos'
      		delay(15);             // waits 15ms for the servo to reach the position
      	}
   }
      while (newRfidId.equals(SahneRFID) && SahneMAss != 0 && Zubereitung == true)
   {
-     for (pos = 0; pos <= 180; pos += 1) { // goes from 0 degrees to 180 degrees
+     for (pos = Tief; pos <= Hoch; pos += 1) { // goes from 0 degrees to 180 degrees
      		// in steps of 1 degree
      		myservo.write(pos);    // tell servo to go to position in variable 'pos'
      		delay(15);             // waits 15ms for the servo to reach the position
      	}
        SahneMAss -= 1;
-     	for (pos = 180; pos >= 0; pos -= 1) { // goes from 180 degrees to 0 degrees
+     	for (pos = Hoch; pos >= Tief; pos -= 1) { // goes from 180 degrees to 0 degrees
      		myservo.write(pos);    // tell servo to go to position in variable 'pos'
      		delay(15);             // waits 15ms for the servo to reach the position
      	}
   }
      while (newRfidId.equals(BlueCuracaoRFID) && BlueCuracaoMAss != 0 && Zubereitung == true)
   {
-     for (pos = 0; pos <= 180; pos += 1) { // goes from 0 degrees to 180 degrees
+     for (pos = Tief; pos <= Hoch; pos += 1) { // goes from 0 degrees to 180 degrees
      		// in steps of 1 degree
      		myservo.write(pos);    // tell servo to go to position in variable 'pos'
      		delay(15);             // waits 15ms for the servo to reach the position
      	}
        BlueCuracaoMAss -= 1;
-     	for (pos = 180; pos >= 0; pos -= 1) { // goes from 180 degrees to 0 degrees
+     	for (pos = Hoch; pos >= Tief; pos -= 1) { // goes from 180 degrees to 0 degrees
      		myservo.write(pos);    // tell servo to go to position in variable 'pos'
      		delay(15);             // waits 15ms for the servo to reach the position
      	}
   }
      while (newRfidId.equals(KokossirupRFID) && KokossirupMAss != 0 && Zubereitung == true)
   {
-     for (pos = 0; pos <= 180; pos += 1) { // goes from 0 degrees to 180 degrees
+     for (pos = Tief; pos <= Hoch; pos += 1) { // goes from 0 degrees to 180 degrees
      		// in steps of 1 degree
      		myservo.write(pos);    // tell servo to go to position in variable 'pos'
      		delay(15);             // waits 15ms for the servo to reach the position
      	}
        KokossirupMAss -= 1;
-     	for (pos = 180; pos >= 0; pos -= 1) { // goes from 180 degrees to 0 degrees
+     	for (pos = Hoch; pos >= Tief; pos -= 1) { // goes from 180 degrees to 0 degrees
      		myservo.write(pos);    // tell servo to go to position in variable 'pos'
      		delay(15);             // waits 15ms for the servo to reach the position
      	}
   }
      while (newRfidId.equals(RumRFID) && RumMAss != 0 && Zubereitung == true)
   {
-     for (pos = 0; pos <= 180; pos += 1) { // goes from 0 degrees to 180 degrees
+     for (pos = Tief; pos <= Hoch; pos += 1) { // goes from 0 degrees to 180 degrees
      		// in steps of 1 degree
      		myservo.write(pos);    // tell servo to go to position in variable 'pos'
      		delay(15);             // waits 15ms for the servo to reach the position
      	}
        RumMAss -= 1;
-     	for (pos = 180; pos >= 0; pos -= 1) { // goes from 180 degrees to 0 degrees
+     	for (pos = Hoch; pos >= Tief; pos -= 1) { // goes from 180 degrees to 0 degrees
      		myservo.write(pos);    // tell servo to go to position in variable 'pos'
      		delay(15);             // waits 15ms for the servo to reach the position
      	}
   }
      while (newRfidId.equals(AnanassaftRFID) && AnanassaftMAss != 0 && Zubereitung == true)
   {
-     for (pos = 0; pos <= 180; pos += 1) { // goes from 0 degrees to 180 degrees
+     for (pos = Tief; pos <= Hoch; pos += 1) { // goes from 0 degrees to 180 degrees
      		// in steps of 1 degree
      		myservo.write(pos);    // tell servo to go to position in variable 'pos'
      		delay(15);             // waits 15ms for the servo to reach the position
      	}
        AnanassaftMAss -= 1;
-     	for (pos = 180; pos >= 0; pos -= 1) { // goes from 180 degrees to 0 degrees
+     	for (pos = Hoch; pos >= Tief; pos -= 1) { // goes from 180 degrees to 0 degrees
      		myservo.write(pos);    // tell servo to go to position in variable 'pos'
      		delay(15);             // waits 15ms for the servo to reach the position
      	}
   }
      while (newRfidId.equals(MandelsirupRFID) && MandelsirupMAss != 0 && Zubereitung == true)
   {
-     for (pos = 0; pos <= 180; pos += 1) { // goes from 0 degrees to 180 degrees
+     for (pos = Tief; pos <= Hoch; pos += 1) { // goes from 0 degrees to 180 degrees
      		// in steps of 1 degree
      		myservo.write(pos);    // tell servo to go to position in variable 'pos'
      		delay(15);             // waits 15ms for the servo to reach the position
      	}
        MandelsirupMAss -= 1;
-     	for (pos = 180; pos >= 0; pos -= 1) { // goes from 180 degrees to 0 degrees
+     	for (pos = Hoch; pos >= Tief; pos -= 1) { // goes from 180 degrees to 0 degrees
      		myservo.write(pos);    // tell servo to go to position in variable 'pos'
      		delay(15);             // waits 15ms for the servo to reach the position
      	}
   }
      while (newRfidId.equals(ZuckersirupRFID) && ZuckersirupMAss != 0 && Zubereitung == true)
   {
-     for (pos = 0; pos <= 180; pos += 1) { // goes from 0 degrees to 180 degrees
+     for (pos = Tief; pos <= Hoch; pos += 1) { // goes from 0 degrees to 180 degrees
      		// in steps of 1 degree
      		myservo.write(pos);    // tell servo to go to position in variable 'pos'
      		delay(15);             // waits 15ms for the servo to reach the position
      	}
        ZuckersirupMAss -= 1;
-     	for (pos = 180; pos >= 0; pos -= 1) { // goes from 180 degrees to 0 degrees
+     	for (pos = Hoch; pos >= Tief; pos -= 1) { // goes from 180 degrees to 0 degrees
      		myservo.write(pos);    // tell servo to go to position in variable 'pos'
      		delay(15);             // waits 15ms for the servo to reach the position
      	}
   }
      while (newRfidId.equals(OrangensaftRFID) && OrangensaftMAss != 0 && Zubereitung == true)
   {
-     for (pos = 0; pos <= 180; pos += 1) { // goes from 0 degrees to 180 degrees
+     for (pos = Tief; pos <= Hoch; pos += 1) { // goes from 0 degrees to 180 degrees
      		// in steps of 1 degree
      		myservo.write(pos);    // tell servo to go to position in variable 'pos'
      		delay(15);             // waits 15ms for the servo to reach the position
      	}
        OrangensaftMAss -= 1;
-     	for (pos = 180; pos >= 0; pos -= 1) { // goes from 180 degrees to 0 degrees
+     	for (pos = Hoch; pos >= Tief; pos -= 1) { // goes from 180 degrees to 0 degrees
      		myservo.write(pos);    // tell servo to go to position in variable 'pos'
      		delay(15);             // waits 15ms for the servo to reach the position
      	}
   }
      while (newRfidId.equals(KaffeelikoerRFID) && KaffeelikoerMAss != 0 && Zubereitung == true)
   {
-     for (pos = 0; pos <= 180; pos += 1) { // goes from 0 degrees to 180 degrees
+     for (pos = Tief; pos <= Hoch; pos += 1) { // goes from 0 degrees to 180 degrees
      		// in steps of 1 degree
      		myservo.write(pos);    // tell servo to go to position in variable 'pos'
      		delay(15);             // waits 15ms for the servo to reach the position
      	}
        KaffeelikoerMAss -= 1;
-     	for (pos = 180; pos >= 0; pos -= 1) { // goes from 180 degrees to 0 degrees
+     	for (pos = Hoch; pos >= Tief; pos -= 1) { // goes from 180 degrees to 0 degrees
      		myservo.write(pos);    // tell servo to go to position in variable 'pos'
      		delay(15);             // waits 15ms for the servo to reach the position
      	}
   }
      while (newRfidId.equals(TomatensaftRFID) && TomatensaftMAss != 0 && Zubereitung == true)
   {
-     for (pos = 0; pos <= 180; pos += 1) { // goes from 0 degrees to 180 degrees
+     for (pos = Tief; pos <= Hoch; pos += 1) { // goes from 0 degrees to 180 degrees
      		// in steps of 1 degree
      		myservo.write(pos);    // tell servo to go to position in variable 'pos'
      		delay(15);             // waits 15ms for the servo to reach the position
      	}
        TomatensaftMAss -= 1;
-     	for (pos = 180; pos >= 0; pos -= 1) { // goes from 180 degrees to 0 degrees
+     	for (pos = Hoch; pos >= Tief; pos -= 1) { // goes from 180 degrees to 0 degrees
      		myservo.write(pos);    // tell servo to go to position in variable 'pos'
      		delay(15);             // waits 15ms for the servo to reach the position
      	}
   }
      while (newRfidId.equals(LimettensaftRFID) && LimettensaftMAss != 0 && Zubereitung == true)
   {
-     for (pos = 0; pos <= 180; pos += 1) { // goes from 0 degrees to 180 degrees
+     for (pos = Tief; pos <= Hoch; pos += 1) { // goes from 0 degrees to 180 degrees
      		// in steps of 1 degree
      		myservo.write(pos);    // tell servo to go to position in variable 'pos'
      		delay(15);             // waits 15ms for the servo to reach the position
      	}
        LimettensaftMAss -= 1;
-     	for (pos = 180; pos >= 0; pos -= 1) { // goes from 180 degrees to 0 degrees
+     	for (pos = Hoch; pos >= Tief; pos -= 1) { // goes from 180 degrees to 0 degrees
      		myservo.write(pos);    // tell servo to go to position in variable 'pos'
      		delay(15);             // waits 15ms for the servo to reach the position
      	}
   }
      while (newRfidId.equals(CointreuRFID) && CointreuMAss != 0 && Zubereitung == true)
   {
-     for (pos = 0; pos <= 180; pos += 1) { // goes from 0 degrees to 180 degrees
+     for (pos = Tief; pos <= Hoch; pos += 1) { // goes from 0 degrees to 180 degrees
      		// in steps of 1 degree
      		myservo.write(pos);    // tell servo to go to position in variable 'pos'
      		delay(15);             // waits 15ms for the servo to reach the position
      	}
        CointreuMAss -= 1;
-     	for (pos = 180; pos >= 0; pos -= 1) { // goes from 180 degrees to 0 degrees
+     	for (pos = Hoch; pos >= Tief; pos -= 1) { // goes from 180 degrees to 0 degrees
      		myservo.write(pos);    // tell servo to go to position in variable 'pos'
      		delay(15);             // waits 15ms for the servo to reach the position
      	}
   }
      while (newRfidId.equals(CranberrynektarRFID) && CranberrynektarMAss != 0 && Zubereitung == true)
   {
-     for (pos = 0; pos <= 180; pos += 1) { // goes from 0 degrees to 180 degrees
+     for (pos = Tief; pos <= Hoch; pos += 1) { // goes from 0 degrees to 180 degrees
      		// in steps of 1 degree
      		myservo.write(pos);    // tell servo to go to position in variable 'pos'
      		delay(15);             // waits 15ms for the servo to reach the position
      	}
        CranberrynektarMAss -= 1;
-     	for (pos = 180; pos >= 0; pos -= 1) { // goes from 180 degrees to 0 degrees
+     	for (pos = Hoch; pos >= Tief; pos -= 1) { // goes from 180 degrees to 0 degrees
      		myservo.write(pos);    // tell servo to go to position in variable 'pos'
      		delay(15);             // waits 15ms for the servo to reach the position
      	}
   }
      while (newRfidId.equals(GrenadineRFID) && GrenadineMAss != 0 && Zubereitung == true)
   {
-     for (pos = 0; pos <= 180; pos += 1) { // goes from 0 degrees to 180 degrees
+     for (pos = Tief; pos <= Hoch; pos += 1) { // goes from 0 degrees to 180 degrees
      		// in steps of 1 degree
      		myservo.write(pos);    // tell servo to go to position in variable 'pos'
      		delay(15);             // waits 15ms for the servo to reach the position
      	}
        GrenadineMAss -= 1;
-     	for (pos = 180; pos >= 0; pos -= 1) { // goes from 180 degrees to 0 degrees
+     	for (pos = Hoch; pos >= Tief; pos -= 1) { // goes from 180 degrees to 0 degrees
      		myservo.write(pos);    // tell servo to go to position in variable 'pos'
      		delay(15);             // waits 15ms for the servo to reach the position
      	}
   }
      while (newRfidId.equals(PfirsichlikoerRFID) && PfirsichlikoerMAss != 0 && Zubereitung == true)
   {
-     for (pos = 0; pos <= 180; pos += 1) { // goes from 0 degrees to 180 degrees
+     for (pos = Tief; pos <= Hoch; pos += 1) { // goes from 0 degrees to 180 degrees
      		// in steps of 1 degree
      		myservo.write(pos);    // tell servo to go to position in variable 'pos'
      		delay(15);             // waits 15ms for the servo to reach the position
      	}
        PfirsichlikoerMAss -= 1;
-     	for (pos = 180; pos >= 0; pos -= 1) { // goes from 180 degrees to 0 degrees
+     	for (pos = Hoch; pos >= Tief; pos -= 1) { // goes from 180 degrees to 0 degrees
      		myservo.write(pos);    // tell servo to go to position in variable 'pos'
      		delay(15);             // waits 15ms for the servo to reach the position
      	}
